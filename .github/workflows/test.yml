@@ -25,5 +25,5 @@ jobs:
       - uses: actions/checkout@v3
         env:
             SECRET: "test"
-      - run: echo ${SECRET}
+      - run: echo ${{ secrets.SECRET_KEY }}
       - run: printenv

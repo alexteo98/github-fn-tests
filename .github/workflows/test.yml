@@ -22,10 +22,8 @@ jobs:
       name: Test
 
     steps:
-      - name: echo key
+      - uses: actions/checkout@v3
       - env:
         JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
-      - uses: actions/checkout@v3
-        
       - run: echo ${{ secrets.JWT_SECRET_KEY }}
       - run: printenv

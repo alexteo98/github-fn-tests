@@ -20,18 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: Test
-      url: https://github.com
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+      - name: echo key
+      - env:
+        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
       - uses: actions/checkout@v3
-      
-        with:
-            node-version: ${{ matrix.node-version }}
-            cache: 'npm'
         
       - run: echo ${{ secrets.JWT_SECRET_KEY }}
+      - run: printenv

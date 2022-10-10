@@ -24,6 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         env:
-            SECRET: "test"
-      - run: echo ${{ secrets.SECRET_KEY }}
+            SECRET: ${{ secrets.SECRET_KEY }}
+      - run: echo ${SECRET}
       - run: printenv

@@ -1,0 +1,42 @@
+name: User Service Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Manual run job'
+  push:
+    branches: [ "**" ]
+
+  pull_request:
+    branches: [ "main" ]
+
+
+defaults:
+ run:
+  working-directory: ./
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    environment: 
+      name: Test
+      url: https://github.com
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      
+      with:
+        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - run: echo $JWT_SECRET_KEY

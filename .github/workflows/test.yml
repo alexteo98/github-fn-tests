@@ -24,6 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         env:
-            SECRET: ${{ secrets.JWT_SECRET_KEY }}
-      - run: echo '${SECRET}'
+            SECRET: "test"
+      - run: echo ${SECRET}
       - run: printenv

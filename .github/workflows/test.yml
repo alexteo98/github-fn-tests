@@ -24,6 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         env:
-            JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
-      - run: echo ${{ secrets.JWT_SECRET_KEY }}
+            SECRET: ${{ secrets.JWT_SECRET_KEY }}
+      - run: echo ${SECRET}
       - run: printenv
